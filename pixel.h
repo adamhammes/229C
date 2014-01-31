@@ -8,4 +8,4 @@ typedef struct pixel_s {
 	unsigned char green;
 	unsigned char blue;
 	unsigned char alpha;
-} pixel;
+} Pixel;
