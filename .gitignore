@@ -6,6 +6,10 @@
 *.lib
 *.a
 
+# C compiling
+*.swp
+*.gch
+
 # Shared objects (inc. Windows DLLs)
 *.dll
 *.so
