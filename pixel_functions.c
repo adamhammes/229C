@@ -1,5 +1,15 @@
 #include "pixel_functions.h"
 
+Pixel create_pixel(unsigned char r, unsigned char g, unsigned char b, unsigned char a) {
+	Pixel temp;
+	temp.red = r;
+	temp.green = g;
+	temp.blue = b;
+	temp.alpha = a;
+	
+	return temp;	
+}	
+
 void black_and_white(Pixel *p) {
 	Pixel temp;
 	unsigned char average = (p->red + p->blue + p->green)/3;
