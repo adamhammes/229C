@@ -1,5 +1,6 @@
 #include "pixel_functions.h"
 #include <math.h>
+#include <string.h>
 
 Pixel create_pixel(unsigned char r, unsigned char g, unsigned char b, unsigned char a) {
 	Pixel temp;
@@ -28,8 +29,39 @@ void overlay(Pixel *a, Pixel *b) {
 	*a = temp;
 }
 
-
 unsigned char calculate_color(unsigned char r1, unsigned char r2, unsigned char a1, unsigned char a2) {
 	return (r2 * a2)/255 + a1 * (255 - a2) * r1 / 255 / 255;
+}
+
+void color_shift(Pixel *p, char* pattern) {
+	unsigned char t;
+	
+	if( strcmp( pattern, "RG" ) || strcmp( pattern, "GR" ) ) {
+		swap_colors( &p->red, &p->green);
+	} if( strcmp( pattern, "RB" ) || strcmp( pattern, "BR" ) ) {
+		swap_colors( &p->red, &p->blue );
+	} if( strcmp( pattern, "GB" ) || strcmp( pattern, "BG" ) ) {
+		swap_colors( &p->green, &p->blue );
+	} if( strcmp( pattern, "RGB" ) || strcmp( pattern, "GBR" ) || strcmp( pattern, "BRG" ) ) {
+		triple_swap( &p->red, &p->green, &p->blue );
+	} if( strcmp( pattern, "RBG" ) || strcmp( pattern, "BGR" ) || strcmp( pattern, "GRB" ) ) {
+		triple_swap( &p->red, &p->blue, &p->green );
+	} else {
+		/* TODO: error case */
+	}
+
+}
+
+void swap_colors(unsigned char *a, unsigned char *b) {
+	unsigned char t  = *a;
+	*a = *b;
+	*b = t;
+}
+
+void triple_swap( unsigned char *a, unsigned char *b, unsigned char *c ) {
+	unsigned char t = *a;
+	*a = *c;
+	*b = *a;
+	*c = t;
 }
 
