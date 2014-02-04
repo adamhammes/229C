@@ -12,7 +12,10 @@ Pixel create_pixel(unsigned char r, unsigned char g, unsigned char b, unsigned c
 
 void black_and_white(Pixel *p) {
 	Pixel temp;
-	unsigned char average = (p->red + p->blue + p->green)/3;
+
+	long double rounding_constant = 0.5;
+	double average = (p->red + p->blue + p->green)/3 + rounding_constant;
+	int rounded_average = (int) average;
 
 	temp.red = temp.blue = temp.green = average;
 	*p = temp;
