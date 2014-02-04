@@ -1,4 +1,5 @@
 #include "pixel_functions.h"
+#include <math.h>
 
 Pixel create_pixel(unsigned char r, unsigned char g, unsigned char b, unsigned char a) {
 	Pixel temp;
@@ -11,14 +12,9 @@ Pixel create_pixel(unsigned char r, unsigned char g, unsigned char b, unsigned c
 }	
 
 void black_and_white(Pixel *p) {
-	Pixel temp;
-
-	double rounding_constant = 0.5;
-	double average =( (double) (p->red + p->blue + p->green) )/3 + rounding_constant;
-	int rounded_average = (int) average;
-
-	temp.red = temp.blue = temp.green = average;
-	*p = temp;
+	double average =( (double) (p->red + p->blue + p->green) )/3;
+	unsigned char rounded_average = round( average );
+	p->red = p->blue = p->green = average;
 }
 
 void overlay(Pixel *a, Pixel *b) {
