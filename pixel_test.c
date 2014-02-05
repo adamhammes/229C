@@ -22,11 +22,10 @@ int creation_test() {
 int grey_test() {
 	Pixel a, b;
 
-	a = *create_pixel(50, 100, 150, 200);
+	a = *create_pixel(50, 100, 150, 100);
 	black_and_white(&a);
 
-	b.red = b.blue = b.green = 100;
-	b.alpha = 200;
+	b.red = b.blue = b.green = b.alpha = 100;
 
 	return pixel_equals(&a, &b);
 }
