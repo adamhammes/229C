@@ -25,13 +25,15 @@ void overlay(Pixel *a, Pixel *b) {
 	temp.red =   calculate_color(a->red, b->red, a->alpha, b->alpha);
 	temp.blue =  calculate_color(a->blue, b->blue, a->alpha, b->alpha);
 	temp.green = calculate_color(a->green, b->green, a->alpha, b->alpha);
-	temp.alpha = b->alpha + a->alpha * (255- b->alpha) / 255;
+	temp.alpha = (unsigned char) round( (double) b->alpha + a->alpha * (255- b->alpha) / 255 );
 
 	*a = temp;
 }
 
 unsigned char calculate_color(unsigned char r1, unsigned char r2, unsigned char a1, unsigned char a2) {
-	return (r2 * a2)/255 + a1 * (255 - a2) * r1 / 255 / 255;
+	double double_r2 = (double) r2; /* force double division in calculation */
+
+	return (unsigned char) round( (double_r2 * a2)/255 + a1 * (255 - a2) * r1 / 255 / 255 );
 }
 
 void color_shift(Pixel *p, char* pattern) {
