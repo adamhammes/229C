@@ -1,8 +1,21 @@
 #include "pixel_test.h"
-
+#include <stdio.h>
 
 int main(int argc, char** argv) {
-	return 0;
+	if( creation_test() )
+		printf("Pixel creation worked correctly!\n");
+	 else
+		printf("Pixel creation failed.\n");
+
+	if( grey_test() )
+		printf("Black and white conversion worked!\n");
+	else 
+		printf("Black and white conversion failed.\n");
+
+	if( overlay_test() )
+		printf("Pixel overlay ran successfully!\n");
+	else 
+		printf("Pixel overlay failed.\n");
 }
 
 
@@ -24,7 +37,6 @@ int grey_test() {
 
 	a = *create_pixel(50, 100, 150, 100);
 	black_and_white(&a);
-	/* b has correct values */
 	b.red = b.blue = b.green = b.alpha = 100;
 
 	return pixel_equals(&a, &b);
