@@ -56,8 +56,27 @@ int overlay_test() {
 
 
 int pixel_equals(Pixel *a, Pixel *b) {
-	return	a->red == b->red &&
-			a->blue == b->blue &&
-			a->green == b->green &&
-			a->alpha == b->alpha;	
+	int toReturn = 1;
+	
+	if( a->red != b->red ) {
+		printf("a.red was %d, supposed to be %d.\n", a->red, b->red);
+		toReturn = 0;
+	}
+	
+	if( a->blue != b-> blue ) {
+		printf("a.blue was %d, supposed to be %d.\n", a->blue, b->blue);
+		toReturn = 0;
+	}
+
+	if( a->green != b->green ) {
+		printf("a.green was %d, supposed to be %d.\n", a->green, b->green);
+		toReturn = 0;
+	}
+		
+	if( a->alpha != b->alpha ) {
+		printf("a.alpha was %d, supposed  to be %d.\n", a->alpha, b->alpha);
+		toReturn = 0;
+	}
+
+	return toReturn;
 }
