@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 Pixel* create_pixel(unsigned char r, unsigned char g, unsigned char b, unsigned char a) {
-	Pixel* temp = ( Pixel*) malloc( sizeof(Pixel) );
+	Pixel* temp = ( Pixel* ) malloc( sizeof(Pixel) );
 	temp->red = r;
 	temp->green = g;
 	temp->blue = b;
