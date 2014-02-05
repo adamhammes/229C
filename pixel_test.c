@@ -23,8 +23,8 @@ int creation_test() {
 	Pixel a, b;
 
 	a.red = 50;
-	a.blue = 100;
-	a.green = 150;
+	a.green = 100;
+	a.blue = 150;
 	a.alpha = 200;
 
 	b = *create_pixel(50, 100, 150, 200);
