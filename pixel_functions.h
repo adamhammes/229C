@@ -1,5 +1,5 @@
 #include "pixel.h"
-#include <String.h>
+#include <string.h>
 
 Pixel* create_pixel(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 void black_and_white(Pixel *p);
