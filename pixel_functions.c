@@ -33,7 +33,7 @@ void overlay(Pixel *a, Pixel *b) {
 unsigned char calculate_color(unsigned char r1, unsigned char r2, unsigned char a1, unsigned char a2) {
 	double d_a2 = (double) a2; /* force double division in calculation */
 	
-	return (unsigned char) round( (d_a2 * r2 /255) + a1(255-d_a2)r1 / (255* 255));
+	return (unsigned char) round( (d_a2 * r2 /255) + a1* (255-d_a2) *r1 / (255* 255));
 }
 
 void color_shift(Pixel *p, char* pattern) {
