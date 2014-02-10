@@ -3,12 +3,12 @@
 #include <string.h>
 #include <stdlib.h>
 
-Pixel* create_pixel(unsigned char r, unsigned char g, unsigned char b, unsigned char a) {
-	Pixel* temp = ( Pixel* ) malloc( sizeof(Pixel) );
-	temp->red = r;
-	temp->green = g;
-	temp->blue = b;
-	temp->alpha = a;
+Pixel create_pixel(unsigned char r, unsigned char g, unsigned char b, unsigned char a) {
+	Pixel temp;
+	temp.red = r;
+	temp.green = g;
+	temp.blue = b;
+	temp.alpha = a;
 	
 	return temp;	
 }	
