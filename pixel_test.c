@@ -21,39 +21,49 @@ int main(int argc, char** argv) {
 
 int creation_test() {
 	Pixel a, b;
+	int toReturn;
 
-	a.red = 50;
-	a.green = 100;
-	a.blue = 150;
-	a.alpha = 200;
+	a = create_pixel(50, 100, 150, 200);
 
-	b = *create_pixel(50, 100, 150, 200);
+	b.red = 50;
+	b.green = 100;
+	b.blue = 150;
+	b.alpha = 200;
+	
+	toReturn = pixel_equals(&a, &b);
 
-	return pixel_equals(&a, &b);
+
+	return toReturn;
 }
 
 int grey_test() {
 	Pixel a, b;
+	int toReturn;
 
-	a = *create_pixel(50, 100, 150, 100);
+	a = create_pixel(50, 100, 150, 100);
 	black_and_white(&a);
 	b.red = b.blue = b.green = b.alpha = 100;
 
-	return pixel_equals(&a, &b);
+	toReturn = pixel_equals(&a, &b);
+
+	return toReturn;
 }
 
 int overlay_test() {
 	Pixel a, b, c;
+	int toReturn;
 
-	a = *create_pixel(50, 100, 150, 200);
-	b = *create_pixel(200, 150, 100, 50);
+	a = create_pixel(50, 100, 150, 200);
+	b = create_pixel(200, 150, 100, 50);
 
 	overlay(&a, &b);
-	c = *create_pixel(70, 92, 114, 210);
+	c = create_pixel(70, 92, 114, 210);
 
-	return pixel_equals(&a, &c);
+
+	toReturn = pixel_equals(&a, &c);
+
+	return toReturn;
 }
-
 
 int pixel_equals(Pixel *a, Pixel *b) {
 	int toReturn = 1;
