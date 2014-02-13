@@ -1,4 +1,6 @@
 #include "image_functions.h"
+#include <stdlib.h>
+
 
 Image read_in(FILE* f) {
 	int width, height, i, j;
@@ -7,10 +9,10 @@ Image read_in(FILE* f) {
 	fread( &width,  4, 1, f );
 	fread( &height, 4, 1, f);
 
-	image.pixels  =  (**Image) malloc( width * sizeof(Pixel*) );
+	image.pixels  = (Pixel**) malloc( width * sizeof(Pixel*) );
 	
 	for( i = 0; i < width; i++ ) {
-		image.pixels[i] = (*Image) malloc( height * sizeof(Pixel) );
+		image.pixels[i] = (Pixel*) malloc( height * sizeof(Pixel) );
 	}
 
 	for( i = 0; i < width; i++ ) {
@@ -22,7 +24,14 @@ Image read_in(FILE* f) {
 		}
 	}
 
-	return Image;
+	return image;
 }
 
-void close_Image(Image* i);
+void close_Image(Image* image) {
+	int i;
+	for( i = 0; i < image->width; i++ ) {
+		free( image->pixels[i] );
+	}
+
+	free( image->pixels[i] );
+}
