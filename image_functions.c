@@ -40,6 +40,24 @@ Image read_in(FILE* f) {
 	return image;
 }
 
+void write_file(FILE* outfile, Image* pic) {
+	int i, j;
+	/* again, have to specify int size */
+	fwrite( &(pic->width),  4, 1, outfile );
+	fwrite( &(pic->height), 4, 1, outfile );
+
+	for( i = 0; i < pic->width; i++ ) {
+		for( j = 0; i < pic->height; j++ ) {
+			fwrite( &(image->pixels[i][j].red),   sizeof(unsigned char), 1, outfile );
+			fwrite( &(image->pixels[i][j].blue),  sizeof(unsigned char), 1, outfile );
+			fwrite( &(image->pixels[i][j].green), sizeof(unsigned char), 1, outfile );
+			fwrite( &(image->pixels[i][j].alphs), sizeof(unsigned char), 1, outfile );
+		}
+	}
+
+
+}
+
 void close_Image(Image* image) {
 	int i;
 	for( i = 0; i < image->width; i++ ) {
