@@ -1,6 +1,19 @@
 #include "image_functions.h"
 #include <stdlib.h>
 
+FILE* open_file(char* name) {
+	FILE* file = fopen( name, "rb" );
+
+	if( file == 0 ) {
+		printf("File not found.\n");
+		exit(1);
+	}
+
+	fflush(file);
+
+	return file;
+}
+
 
 Image read_in(FILE* f) {
 	int width, height, i, j;
