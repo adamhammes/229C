@@ -16,11 +16,11 @@ FILE* open_file(char* name) {
 
 
 Image read_in(FILE* f) {
-	int width, height, i, j;
+	int i, j;
 	Image image;
 	/* specify byte size of 4 in case we are running on a 16-bit architecture */
-	fread( &width,  4, 1, f );
-	fread( &height, 4, 1, f);
+	fread( &(image->width),  4, 1, f );
+	fread( &(image->height), 4, 1, f);
 
 	image.pixels  = (Pixel**) malloc( width * sizeof(Pixel*) );
 	
