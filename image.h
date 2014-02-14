@@ -7,7 +7,7 @@
 
 typedef struct image_s {
 	unsigned int width;
-	unsigned int heigth;
+	unsigned int height;
 	
 	/* will hold the pixels of the image */
 	Pixel** pixels;
