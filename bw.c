@@ -3,7 +3,6 @@
 int main( int argc, char** argv ) {
 	int i, j;	
 	FILE* infile;
-	FILE* outfile;
 	Image pic;
 	
 	if( argc <= 1 ) { /* no arguments given */
@@ -20,12 +19,7 @@ int main( int argc, char** argv ) {
 		}
 	}
 
-	outfile = fopen( argv[2], "wb" );
-	write_file( outfile, &pic );
-
-
+	write_file( argv[2] , &pic );
 	close_image( &pic );
-	free( outfile );
-	
 	return 0;
 }
