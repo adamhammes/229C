@@ -1,5 +1,6 @@
 #include "image.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 FILE* open_file(char* name);
 Image read_in(FILE* f);
