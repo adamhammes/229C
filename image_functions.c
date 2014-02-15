@@ -1,5 +1,5 @@
-#include "image_functions.h"
 #include <stdlib.h>
+#include "image_functions.h"
 
 FILE* open_file(char* name) {
 	FILE* file = fopen( name, "rb" );
