@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include "image_functions.h"
 
 FILE* open_file(char* name) {
@@ -58,7 +57,7 @@ void write_file(FILE* outfile, Image* pic) {
 
 }
 
-void close_Image(Image* image) {
+void close_image(Image* image) {
 	int i;
 	for( i = 0; i < image->width; i++ ) {
 		free( image->pixels[i] );
