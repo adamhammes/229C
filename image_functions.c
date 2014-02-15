@@ -39,8 +39,10 @@ Image read_in(FILE* f) {
 	return image;
 }
 
-void write_file(FILE* outfile, Image* pic) {
+void write_file(char* name, Image* pic) {
 	int i, j;
+	FILE* outfile = fopen( name, "wb" );
+
 	/* again, have to specify int size */
 	fwrite( &(pic->width),  4, 1, outfile );
 	fwrite( &(pic->height), 4, 1, outfile );
