@@ -56,7 +56,7 @@ void write_file(char* name, Image* pic) {
 		}
 	}
 
-
+	free( outfile );
 }
 
 void close_image(Image* image) {
