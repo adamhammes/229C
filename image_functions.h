@@ -5,5 +5,7 @@
 FILE* open_file(char* name);
 Image read_in(FILE* f);
 
+void make_grey(Image* original);
+
 void write_image(char* name, Image* pic);
 void close_image(Image* i);
