@@ -62,6 +62,6 @@ void close_image(Image* image) {
 	for( i = 0; i < image->width; i++ ) {
 		free( image->pixels[i] );
 	}
-
-	free( image->pixels[i] );
+	printf("all subpointers cleared\n");
+	free( image->pixels );
 }
