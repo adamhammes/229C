@@ -3,9 +3,6 @@ all: bw
 clean : 
 	rm *.o bw
 
-pixel_functions.o : pixel_functions.c pixel_functions.h pixel.h
-	gcc -ansi -pedantic -c pixel_functions.c -lm
-
 bw : image_functions.o bw.o pixel_functions.o
 	gcc -ansi -pedantic -o bw bw.o image_functions.o pixel_functions.o -lm
 
