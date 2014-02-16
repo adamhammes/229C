@@ -10,14 +10,9 @@ int main( int argc, char** argv ) {
 	}	
 
 	infile = open_file( argv[1] );
-
 	pic = read_in( infile );
 
-	for( i = 0; i < pic.width; i++ ) {
-		for( j = 0; j < pic.height; j++ ) {
-			black_and_white( &(pic.pixels[i][j]) );
-		}
-	}
+	make_grey( &pic );
 
 	write_file( argv[2] , &pic );
 	close_image( &pic );
