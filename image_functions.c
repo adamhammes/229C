@@ -19,7 +19,7 @@ Image read_in(FILE* f) {
 	Image image;
 	fread( &(image.width),  sizeof(int), 1, f );
 	fread( &(image.height), sizeof(int), 1, f);
-
+	
 	image.pixels  = (Pixel**) malloc( image.width * sizeof(Pixel*) );
 	
 	for( i = 0; i < image.width; i++ ) {
@@ -40,20 +40,20 @@ Image read_in(FILE* f) {
 
 void write_file(char* name, Image* pic) {
 	int i, j;
-	FILE* outfile = fopen( name, "wb" );
 
+	FILE* outfile = fopen( name, "wb" );
+	
 	fwrite( &(pic->width),  sizeof(int), 1, outfile );
 	fwrite( &(pic->height), sizeof(int), 1, outfile );
-
+	
 	for( i = 0; i < pic->width; i++ ) {
-		for( j = 0; i < pic->height; j++ ) {
+		for( j = 0; j < pic->height; j++ ) {
 			fwrite( &(pic->pixels[i][j].red),   sizeof(unsigned char), 1, outfile );
 			fwrite( &(pic->pixels[i][j].blue),  sizeof(unsigned char), 1, outfile );
 			fwrite( &(pic->pixels[i][j].green), sizeof(unsigned char), 1, outfile );
 			fwrite( &(pic->pixels[i][j].alpha), sizeof(unsigned char), 1, outfile );
 		}
 	}
-
 	fclose( outfile );
 }
 
