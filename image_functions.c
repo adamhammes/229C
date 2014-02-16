@@ -17,9 +17,8 @@ FILE* open_file(char* name) {
 Image read_in(FILE* f) {
 	int i, j;
 	Image image;
-	/* specify byte size of 4 in case we are running on a 16-bit architecture */
-	fread( &(image.width),  4, 1, f );
-	fread( &(image.height), 4, 1, f);
+	fread( &(image.width),  sizeof(int), 1, f );
+	fread( &(image.height), sizeof(int), 1, f);
 
 	image.pixels  = (Pixel**) malloc( image.width * sizeof(Pixel*) );
 	
@@ -43,9 +42,8 @@ void write_file(char* name, Image* pic) {
 	int i, j;
 	FILE* outfile = fopen( name, "wb" );
 
-	/* again, have to specify int size */
-	fwrite( &(pic->width),  4, 1, outfile );
-	fwrite( &(pic->height), 4, 1, outfile );
+	fwrite( &(pic->width),  sizeof(int), 1, outfile );
+	fwrite( &(pic->height), sizeof(int), 1, outfile );
 
 	for( i = 0; i < pic->width; i++ ) {
 		for( j = 0; i < pic->height; j++ ) {
@@ -56,7 +54,7 @@ void write_file(char* name, Image* pic) {
 		}
 	}
 
-	free( outfile );
+	fclose( outfile );
 }
 
 void close_image(Image* image) {
