@@ -1,7 +1,10 @@
-all: bw
+all: bw colorshift
 
 clean : 
 	rm *.o bw
+
+colorshift : image_functions.o colorshift.o pixel_functions.o
+	gcc -ansi -pedantic -o colorshift colorshift.o image_functions.o pixel_functions.o -lm
 
 bw : image_functions.o bw.o pixel_functions.o
 	gcc -ansi -pedantic -o bw bw.o image_functions.o pixel_functions.o -lm
