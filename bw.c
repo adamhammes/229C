@@ -10,6 +10,7 @@ int main( int argc, char** argv ) {
 
 	infile = open_file( argv[1] );
 	pic = read_in( infile );
+	fclose( infile );
 
 	make_grey( &pic );
 
