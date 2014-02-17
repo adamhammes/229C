@@ -1,7 +1,6 @@
 #include "image_functions.h"
 
 int main( int argc, char** argv ) {
-	int i, j;	
 	FILE* infile;
 	Image pic;
 	
