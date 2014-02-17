@@ -19,7 +19,7 @@ Image read_in(FILE* f) {
 	Image image;
 	fread( &(image.width),  sizeof(int), 1, f );
 	fread( &(image.height), sizeof(int), 1, f);
-
+	
 	image.pixels  = (Pixel**) malloc( image.width * sizeof(Pixel*) );
 	
 	for( i = 0; i < image.width; i++ ) {
@@ -58,14 +58,12 @@ void make_grey(Image* pic) {
 		}
 	}	
 }
-	
-void write_file(char* name, Image* pic) {
+
+void write_file(Image* pic, char* name) {
 	int i, j;
 	FILE* outfile = fopen( name, "wb" );
-
 	fwrite( &(pic->width),  sizeof(int), 1, outfile );
 	fwrite( &(pic->height), sizeof(int), 1, outfile );
-
 	for( i = 0; i < pic->width; i++ ) {
 		for( j = 0; j < pic->height; j++ ) {
 			fwrite( &(pic->pixels[i][j].red),   sizeof(unsigned char), 1, outfile );
@@ -80,13 +78,9 @@ void write_file(char* name, Image* pic) {
 
 void close_image(Image* image) {
 	int i;
-	printf("closing image\n");
 	for( i = 0; i < image->width; i++ ) {
-		printf("%d\n", i);
 		free( image->pixels[i] );
 	}
-	printf("all sub pointers freed\n");
 
-	free( image->pixels[i] );
-	printf("all freed");
+	free( image->pixels );
 }
