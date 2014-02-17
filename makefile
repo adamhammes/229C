@@ -6,6 +6,9 @@ clean :
 colorshift : image_functions.o colorshift.o pixel_functions.o
 	gcc -ansi -pedantic -o colorshift colorshift.o image_functions.o pixel_functions.o -lm
 
+colorshift.o : colorshift.c image_functions.o
+	gcc -ansi -pedantic -c colorshift.c -lm
+
 bw : image_functions.o bw.o pixel_functions.o
 	gcc -ansi -pedantic -o bw bw.o image_functions.o pixel_functions.o -lm
 
