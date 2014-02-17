@@ -59,13 +59,6 @@ void make_grey(Image* pic) {
 	}	
 }
 	
-
-
-
-
-
-
-
 void write_file(char* name, Image* pic) {
 	int i, j;
 	FILE* outfile = fopen( name, "wb" );
@@ -74,7 +67,7 @@ void write_file(char* name, Image* pic) {
 	fwrite( &(pic->height), sizeof(int), 1, outfile );
 
 	for( i = 0; i < pic->width; i++ ) {
-		for( j = 0; i < pic->height; j++ ) {
+		for( j = 0; j < pic->height; j++ ) {
 			fwrite( &(pic->pixels[i][j].red),   sizeof(unsigned char), 1, outfile );
 			fwrite( &(pic->pixels[i][j].blue),  sizeof(unsigned char), 1, outfile );
 			fwrite( &(pic->pixels[i][j].green), sizeof(unsigned char), 1, outfile );
