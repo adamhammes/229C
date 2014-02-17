@@ -13,6 +13,7 @@ FILE* open_file(char* name) {
 	return file;
 }
 
+
 Image read_in(FILE* f) {
 	int i, j;
 	Image image;
@@ -37,15 +38,6 @@ Image read_in(FILE* f) {
 	return image;
 }
 
-void make_grey(Image* pic) {
-	int i, j;
-
-	for( i = 0; i < pic->width; i++ ) {
-		for( j = 0; j < pic->height; j++ ) {
-			black_and_white( &pic->pixels[i][j] );
-		}
-	}
-}
 
 void make_funky(Image* pic, char* pattern) {
 	int i, j;
@@ -56,6 +48,23 @@ void make_funky(Image* pic, char* pattern) {
 		}
 	}
 }
+
+void make_grey(Image* pic) {
+	int i, j;
+
+	for( i = 0; i < pic->width; i++ ) {
+		for( j = 0; j < pic->height; j++ ) {
+			black_and_white( &pic->pixels[i][j] );
+		}
+	}	
+}
+	
+
+
+
+
+
+
 
 void write_file(char* name, Image* pic) {
 	int i, j;
