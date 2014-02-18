@@ -38,13 +38,13 @@ void color_shift(Pixel *p, char* pattern) {
 	
 	if( strcmp( pattern, "RG" ) || strcmp( pattern, "GR" ) ) {
 		swap_colors( &p->red, &p->green);
-	} if( strcmp( pattern, "RB" ) || strcmp( pattern, "BR" ) ) {
+	} else if( strcmp( pattern, "RB" ) || strcmp( pattern, "BR" ) ) {
 		swap_colors( &p->red, &p->blue );
-	} if( strcmp( pattern, "GB" ) || strcmp( pattern, "BG" ) ) {
+	} else if( strcmp( pattern, "GB" ) || strcmp( pattern, "BG" ) ) {
 		swap_colors( &p->green, &p->blue );
-	} if( strcmp( pattern, "RGB" ) || strcmp( pattern, "GBR" ) || strcmp( pattern, "BRG" ) ) {
+	} else if( strcmp( pattern, "RGB" ) || strcmp( pattern, "GBR" ) || strcmp( pattern, "BRG" ) ) {
 		triple_swap( &p->red, &p->green, &p->blue );
-	} if( strcmp( pattern, "RBG" ) || strcmp( pattern, "BGR" ) || strcmp( pattern, "GRB" ) ) {
+	} else if( strcmp( pattern, "RBG" ) || strcmp( pattern, "BGR" ) || strcmp( pattern, "GRB" ) ) {
 		triple_swap( &p->red, &p->blue, &p->green );
 	} else {
 		/* TODO: error case */
