@@ -35,7 +35,6 @@ unsigned char calculate_color(unsigned char r1, unsigned char r2, unsigned char 
 }
 
 void color_shift(Pixel *p, char* pattern) {
-	unsigned char t;
 	
 	if( strcmp( pattern, "RG" ) || strcmp( pattern, "GR" ) ) {
 		swap_colors( &p->red, &p->green);
@@ -60,9 +59,9 @@ void swap_colors(unsigned char *a, unsigned char *b) {
 }
 
 void triple_swap( unsigned char *a, unsigned char *b, unsigned char *c ) {
-	unsigned char t = *a;
-	*a = *c;
+	unsigned char t = *c;
+	
+	*c = *b;
 	*b = *a;
-	*c = t;
+	*a = t;	
 }
-
