@@ -49,6 +49,7 @@ void color_shift(Pixel *p, char* pattern) {
 		triple_swap( &p->red, &p->blue, &p->green );
 	} else {
 		/* TODO: error case */
+		printf("Error case\n");
 	}
 
 }
