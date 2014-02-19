@@ -38,6 +38,25 @@ Image read_in(FILE* f) {
 	return image;
 }
 
+Image crop(Image* pic, int x_start, int y_start, int x, int y) {
+	Image new;
+	int i, j;
+
+	new.width  = x;
+	new.height = y;
+	new.pixels = (Pixel**) malloc( new.width * sizeof(Pixel*) );
+
+	for( i = 0; i < new.width; i++ ) {
+		new.pixels[i] = (Pixel*) malloc( new.height * sizeof(Pixel) );	
+	}
+
+	for( i = x_start; i < (x_start + x) && i < pic->width; i++ ) { } 
+
+}
+
+
+
+
 
 void make_funky(Image* pic, char* pattern) {
 	int i, j;
