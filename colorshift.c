@@ -9,7 +9,6 @@ int main( int argc, char** argv ) {
 		exit(0);
 	}
 
-	printf("%s\n", argv[3]);
 	infile = open_file( argv[1] );
 	pic = read_in( infile );
 	fclose( infile );
