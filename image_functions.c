@@ -52,7 +52,6 @@ Image crop(Image* pic, int x_start, int y_start, int x, int y) {
 
 	for( j = y_start; j < (y_start + y) && j < pic->height; j++ ) { 
 		for( i = x_start; i < (x_start + x) && i < pic->width; i++ ) {
-			printf("pixel was at (%d, %d); now is (%d, %d)\n", i, j, i - x_start, j - y_start);
 			new.pixels[i - x_start][j - y_start] = pic->pixels[i][j];
 		}
 	}
