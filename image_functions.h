@@ -5,6 +5,8 @@
 FILE* open_file(char* name);
 Image read_in(FILE* f);
 
+
+Image crop(Image* pic, int x_start, int y_start, int x, int y);
 void make_grey(Image* pic);
 void make_funky(Image* pic, char* pattern);
 void write_image(char* name, Image* pic);
