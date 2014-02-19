@@ -29,14 +29,33 @@ Image read_in(FILE* f) {
 	for( i = 0; i < image.width; i++ ) {
 		for( j = 0; j < image.height; j++ ) {
 			fread( &image.pixels[i][j].red,   sizeof(unsigned char), 1, f );
-			fread( &image.pixels[i][j].blue,  sizeof(unsigned char), 1, f );
-			fread( &image.pixels[i][j].green, sizeof(unsigned char), 1, f );
+			fread( &image.pixels[i][j].green,  sizeof(unsigned char), 1, f );
+			fread( &image.pixels[i][j].blue, sizeof(unsigned char), 1, f );
 			fread( &image.pixels[i][j].alpha, sizeof(unsigned char), 1, f );
 		}
 	}
 
 	return image;
 }
+
+Image crop(Image* pic, int x_start, int y_start, int x, int y) {
+	Image new;
+	int i, j;
+
+	new.width  = x;
+	new.height = y;
+	new.pixels = (Pixel**) malloc( new.width * sizeof(Pixel*) );
+
+	for( i = 0; i < new.width; i++ ) {
+		new.pixels[i] = (Pixel*) malloc( new.height * sizeof(Pixel) );	
+	}
+
+	for( i = x_start; i < (x_start + x) && i < pic->width; i++ ) { } 
+
+}
+
+
+
 
 
 void make_funky(Image* pic, char* pattern) {
