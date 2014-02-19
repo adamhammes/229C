@@ -50,13 +50,14 @@ Image crop(Image* pic, int x_start, int y_start, int x, int y) {
 		new.pixels[i] = (Pixel*) malloc( new.height * sizeof(Pixel) );	
 	}
 
-	for( i = x_start; i < (x_start + x) && i < pic->width; i++ ) { } 
+	for( i = x_start; i < (x_start + x) && i < pic->width; i++ ) { 
+		for( j = y_start; j < (y_start + y) && j < pic->height; j++ ) {
+			new.pixels[i - x_start][j - y_start] = pic->pixels[i][j];
+		}
+	}
 
+	return new;
 }
-
-
-
-
 
 void make_funky(Image* pic, char* pattern) {
 	int i, j;
