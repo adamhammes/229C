@@ -35,22 +35,17 @@ unsigned char calculate_color(unsigned char r1, unsigned char r2, unsigned char 
 }
 
 void color_shift(Pixel *p, char* pattern) {
-	
-	if( strcmp( pattern, "RG" ) || strcmp( pattern, "GR" ) ) {
+	if( strcmp( pattern, "RG" ) == 0 || strcmp( pattern, "GR" ) == 0 ) {
 		swap_colors( &p->red, &p->green);
-	} if( strcmp( pattern, "RB" ) || strcmp( pattern, "BR" ) ) {
+	} else if( strcmp( pattern, "BR" ) == 0 || strcmp( pattern, "RB" ) == 0 ) {
 		swap_colors( &p->red, &p->blue );
-	} if( strcmp( pattern, "GB" ) || strcmp( pattern, "BG" ) ) {
+	} else if( strcmp( pattern, "BG" ) == 0 || strcmp( pattern, "GB" ) == 0 ) {
 		swap_colors( &p->green, &p->blue );
-	} if( strcmp( pattern, "RGB" ) || strcmp( pattern, "GBR" ) || strcmp( pattern, "BRG" ) ) {
+	} else if( strcmp( pattern, "RGB" ) == 0 || strcmp( pattern, "GBR" ) == 0 || strcmp( pattern, "BRG" ) == 0 ) {
 		triple_swap( &p->red, &p->green, &p->blue );
-	} if( strcmp( pattern, "RBG" ) || strcmp( pattern, "BGR" ) || strcmp( pattern, "GRB" ) ) {
+	} else if( strcmp( pattern, "RBG" ) == 0 || strcmp( pattern, "BGR" ) == 0 || strcmp( pattern, "GRB" ) == 0 ) {
 		triple_swap( &p->red, &p->blue, &p->green );
-	} else {
-		/* TODO: error case */
-		printf("Error case\n");
 	}
-
 }
 
 void swap_colors(unsigned char *a, unsigned char *b) {
