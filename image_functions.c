@@ -26,11 +26,11 @@ Image read_in(FILE* f) {
 		image.pixels[i] = (Pixel*) malloc( image.height * sizeof(Pixel) );
 	}
 
-	for( i = 0; i < image.width; i++ ) {
-		for( j = 0; j < image.height; j++ ) {
+	for( j = 0; j < image.height; j++ ) {
+		for( i = 0; i < image.width; i++ ) {
 			fread( &image.pixels[i][j].red,   sizeof(unsigned char), 1, f );
-			fread( &image.pixels[i][j].green,  sizeof(unsigned char), 1, f );
-			fread( &image.pixels[i][j].blue, sizeof(unsigned char), 1, f );
+			fread( &image.pixels[i][j].green, sizeof(unsigned char), 1, f );
+			fread( &image.pixels[i][j].blue,  sizeof(unsigned char), 1, f );
 			fread( &image.pixels[i][j].alpha, sizeof(unsigned char), 1, f );
 		}
 	}
@@ -50,8 +50,9 @@ Image crop(Image* pic, int x_start, int y_start, int x, int y) {
 		new.pixels[i] = (Pixel*) malloc( new.height * sizeof(Pixel) );	
 	}
 
-	for( i = x_start; i < (x_start + x) && i < pic->width; i++ ) { 
-		for( j = y_start; j < (y_start + y) && j < pic->height; j++ ) {
+	for( j = y_start; j < (y_start + y) && j < pic->height; j++ ) { 
+		for( i = x_start; i < (x_start + x) && i < pic->width; i++ ) {
+			printf("pixel was at (%d, %d); now is (%d, %d)\n", i, j, i - x_start, j - y_start);
 			new.pixels[i - x_start][j - y_start] = pic->pixels[i][j];
 		}
 	}
@@ -62,8 +63,8 @@ Image crop(Image* pic, int x_start, int y_start, int x, int y) {
 void make_funky(Image* pic, char* pattern) {
 	int i, j;
 
-	for( i = 0; i < pic->width; i++ ) {
-		for( j = 0; j < pic->height; j++ ) {
+	for( j = 0; j < pic->height; j++ ) {
+		for( i = 0; i < pic->width; i++ ) {
 			color_shift( &pic->pixels[i][j], pattern );
 		}
 	}
@@ -72,8 +73,8 @@ void make_funky(Image* pic, char* pattern) {
 void make_grey(Image* pic) {
 	int i, j;
 
-	for( i = 0; i < pic->width; i++ ) {
-		for( j = 0; j < pic->height; j++ ) {
+	for( j = 0; j < pic->height; j++ ) {
+		for( i = 0; i < pic->width; i++ ) {
 			black_and_white( &pic->pixels[i][j] );
 		}
 	}	
@@ -84,11 +85,12 @@ void write_file(Image* pic, char* name) {
 	FILE* outfile = fopen( name, "wb" );
 	fwrite( &(pic->width),  sizeof(int), 1, outfile );
 	fwrite( &(pic->height), sizeof(int), 1, outfile );
-	for( i = 0; i < pic->width; i++ ) {
-		for( j = 0; j < pic->height; j++ ) {
+
+	for( j = 0; j < pic->height; j++ ) {
+		for( i = 0; i < pic->width; i++ ) {
 			fwrite( &(pic->pixels[i][j].red),   sizeof(unsigned char), 1, outfile );
-			fwrite( &(pic->pixels[i][j].green),  sizeof(unsigned char), 1, outfile );
-			fwrite( &(pic->pixels[i][j].blue), sizeof(unsigned char), 1, outfile );
+			fwrite( &(pic->pixels[i][j].green), sizeof(unsigned char), 1, outfile );
+			fwrite( &(pic->pixels[i][j].blue),  sizeof(unsigned char), 1, outfile );
 			fwrite( &(pic->pixels[i][j].alpha), sizeof(unsigned char), 1, outfile );
 		}
 	}
