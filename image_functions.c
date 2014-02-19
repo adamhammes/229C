@@ -29,8 +29,8 @@ Image read_in(FILE* f) {
 	for( i = 0; i < image.width; i++ ) {
 		for( j = 0; j < image.height; j++ ) {
 			fread( &image.pixels[i][j].red,   sizeof(unsigned char), 1, f );
-			fread( &image.pixels[i][j].blue,  sizeof(unsigned char), 1, f );
-			fread( &image.pixels[i][j].green, sizeof(unsigned char), 1, f );
+			fread( &image.pixels[i][j].green,  sizeof(unsigned char), 1, f );
+			fread( &image.pixels[i][j].blue, sizeof(unsigned char), 1, f );
 			fread( &image.pixels[i][j].alpha, sizeof(unsigned char), 1, f );
 		}
 	}
@@ -67,8 +67,8 @@ void write_file(Image* pic, char* name) {
 	for( i = 0; i < pic->width; i++ ) {
 		for( j = 0; j < pic->height; j++ ) {
 			fwrite( &(pic->pixels[i][j].red),   sizeof(unsigned char), 1, outfile );
-			fwrite( &(pic->pixels[i][j].blue),  sizeof(unsigned char), 1, outfile );
-			fwrite( &(pic->pixels[i][j].green), sizeof(unsigned char), 1, outfile );
+			fwrite( &(pic->pixels[i][j].green),  sizeof(unsigned char), 1, outfile );
+			fwrite( &(pic->pixels[i][j].blue), sizeof(unsigned char), 1, outfile );
 			fwrite( &(pic->pixels[i][j].alpha), sizeof(unsigned char), 1, outfile );
 		}
 	}
