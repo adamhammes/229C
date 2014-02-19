@@ -1,7 +1,15 @@
-all: bw colorshift
+all: bw colorshift crop
 
 clean : 
-	rm *.o bw
+	rm *.o all
+
+crop : crop.o image_functions.o pixel_functions.o
+	gcc -ansi -pedantic -o crop crop.o image_functions.o pixel_functions.o -lm
+
+crop.o : crop.c image_functions.o
+	gcc -ansi -pedantic -c crop.c -lm
+
+
 
 colorshift : image_functions.o colorshift.o pixel_functions.o
 	gcc -ansi -pedantic -o colorshift colorshift.o image_functions.o pixel_functions.o -lm
