@@ -19,7 +19,7 @@ void black_and_white(Pixel *p) {
 	p->red = p->blue = p->green = average;
 }
 
-void overlay(Pixel *a, Pixel *b) {
+Pixel overlay(Pixel *a, Pixel *b) {
 	Pixel temp;
 
 	temp.red =   calculate_color(a->red, b->red, a->alpha, b->alpha);
@@ -27,7 +27,7 @@ void overlay(Pixel *a, Pixel *b) {
 	temp.green = calculate_color(a->green, b->green, a->alpha, b->alpha);
 	temp.alpha = (unsigned char) lround( (double) b->alpha + a->alpha * (255- b->alpha) / 255 );
 
-	*a = temp;
+	return temp;
 }
 
 unsigned char calculate_color(unsigned char r1, unsigned char r2, unsigned char a1, unsigned char a2) {
