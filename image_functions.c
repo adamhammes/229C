@@ -38,6 +38,20 @@ Image read_in(FILE* f) {
 	return image;
 }
 
+Image make_one( Image* pic1, Image* pic2, int x, int y ) {
+	int i, j;
+	Image temp;
+
+	temp = make_image( pic1->width, pic1->height );
+
+	for( j = x; (j - y) < pic2->height && j < pic1->height; j++ ) {
+		for( i = y; (i - x) < pic2->width && i < pic2->height; i++ ) {
+			temp.pixels[i][j] = overlay( &pic1->pixels[i][j], &pic2->pixels[i - x][j - y]);
+		}
+	}
+	return temp;
+}
+
 Image crop(Image* pic, int x_start, int y_start, int x, int y) {
 	Image new;
 	int i, j;
@@ -104,4 +118,20 @@ void close_image(Image* image) {
 	}
 
 	free( image->pixels );
+}
+
+Image make_image( int x, int y ) {
+	Image temp;
+	int i;
+
+	temp.width = x;
+	temp.height = y;
+
+	temp.pixels = (Pixel**) malloc( x * sizeof(Pixel*) );
+	
+	for( i = 0; i < x; i++ ) {
+		temp.pixels[i] = (Pixel*) malloc( x * sizeof(Pixel) );
+	}
+
+	return temp;
 }
