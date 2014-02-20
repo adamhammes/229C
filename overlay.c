@@ -20,7 +20,7 @@ int main( int argc, char** argv ) {
 
 	make_one( &pic1, &pic2, atoi(argv[4]), atoi(argv[5]) );
 
-	write_file( argv[3],  &pic3 );
+	write_file( &pic3, argv[3] );
 
 	close_image( &pic1 );
 	close_image( &pic2 );
