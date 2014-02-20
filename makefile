@@ -1,7 +1,7 @@
 all: bw colorshift crop overlay
 
 clean : 
-	rm *.o all
+	rm -f *.o bw colorshift crop overlay
 
 overlay : overlay.o image_functions.o pixel_functions.o
 	gcc -o overlay overlay.o image_functions.o pixel_functions.o -lm
