@@ -1,7 +1,37 @@
-229C
-====
+Name:  Adam Hammes
+NetID: hammesa@iastate.edu
 
-Project 1 for ISU's Comp Sci 229
+
+Technical description:
+
+The struct Pixel holds the RGBA values; Pixels are held in a dynamically-allocated array, part of an Image struct which additionally holds the height and width of the image.
+
+
+Assumptions:
+
+Because of the academic nature of this project, I took several liberties with my assumptions. My only protection against faulty command line arguments is checking that the number of arguments is correct, and this is done purely for my own sake; I don’t anticipate having to sanitize my arguments.
+
+For overlay and crop, if the start index is out of bounds the original image is passed through with no changes; if the specified borders fall partially outside of the image, then the “hanging” borders are ignored. My reasoning behind this is that this behavior is what is desired in part B, and it is (entirely coincidentally) very easy to implement. 
+
+Finally, for color_shift, if an incorrect pattern is given, then the output file is the same as the input file.
+ 
+
+Source Files:
+
+pixel.h			defines struct that I store pixels in
+pixel_functions.h	header file for pixel_functions.c
+pixel_functions.c	contains functions that work pixels- black_and_white, 
+			overlay, etc.
+
+image.h			defines struct that holds image pixels and height/width
+image_functions.h	header file for image_functions.c; 
+image_functions.c	calls pixel functions on images and handles image i/o
+
+crop.c			crop main method
+bw.c			black and white main method
+overlay.c		overlay main method
+colorshift.c		color shift main method
+
 
 
 Design Decisions:
