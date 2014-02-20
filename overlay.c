@@ -11,17 +11,14 @@ int main( int argc, char** argv ) {
 
 	infile = open_file( argv[1] );
 	pic1 = read_in( infile );
-
 	infile = open_file( argv[2] );
 	pic2 = read_in( infile );
 	
 	fclose( infile );
 	
 
-	make_one( &pic1, &pic2, atoi(argv[4]), atoi(argv[5]) );
-
+	pic3 = make_one( &pic1, &pic2, atoi(argv[4]), atoi(argv[5]) );
 	write_file( &pic3, argv[3] );
-
 	close_image( &pic1 );
 	close_image( &pic2 );
 	close_image( &pic3 );
