@@ -1,5 +1,9 @@
 all: bw colorshift crop overlay
 
+tarball : bw colorshift crop overlay
+	make clean
+	tar czf hammesa.tar.gzip *.c *.h README.md makefile
+
 clean : 
 	rm -f *.o bw colorshift crop overlay
 
