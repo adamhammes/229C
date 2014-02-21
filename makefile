@@ -46,7 +46,7 @@ ov_test : overlay
 
 tarball : bw colorshift crop overlay
 	make clean
-	tar czf hammesa.tar.gzip *.c *.h README.md makefile
+	tar czf hammesa.tar.gzip *.c *.h README makefile
 
 clean : 
 	rm -f *.o bw colorshift crop overlay
