@@ -7,7 +7,7 @@ bw_test: bw
 	./bw attached.simp BW.simp
 	./compare BW.simp bw_attached.simp
 
-cs_test: cs
+cs_test: colorshift
 	rm -f *keanu*
 	wget --nocheck-certificate http://orion.math.iastate.edu/dstolee/229/project1/keanu.simp >/dev/null 2>&1
 	wget --nocheck-certificate http://orion.math.iastate.edu/dstolee/229/project1/keanurgb.simp >/dev/null 2>&1
