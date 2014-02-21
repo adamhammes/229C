@@ -7,6 +7,24 @@ bw_test: bw
 	./bw attached.simp BW.simp
 	./compare BW.simp bw_attached.simp
 
+cs_test: cs
+	rm -f *keanu*
+	wget --nocheck-certificate http://orion.math.iastate.edu/dstolee/229/project1/keanu.simp >/dev/null 2>&1
+	wget --nocheck-certificate http://orion.math.iastate.edu/dstolee/229/project1/keanurgb.simp >/dev/null 2>&1
+	wget --nocheck-certificate http://orion.math.iastate.edu/dstolee/229/project1/keanurbg.simp >/dev/null 2>&1
+	wget --nocheck-certificate http://orion.math.iastate.edu/dstolee/229/project1/keanurg.simp >/dev/null 2>&1
+	wget --nocheck-certificate http://orion.math.iastate.edu/dstolee/229/project1/keanurb.simp >/dev/null 2>&1
+	wget --nocheck-certificate http://orion.math.iastate.edu/dstolee/229/project1/keanugb.simp >/dev/null 2>&1
+	./colorshift keanu.simp rgb.simp RGB
+	./colorshift keanu.simp rbg.simp RBG
+	./colorshift keanu.simp rg.simp RG
+	./colorshift keanu.simp rb.simp RB
+	./colorshift keanu.simp gb.simp GB
+	./compare rgb.simp keanurgb.simp
+	./compare rbg.simp keanurbg.simp
+	./compare rg.simp keanurg.simp
+	./compare rb.simp keanurb.simp
+	./compare gb.simp keanugb.simp
 
 tarball : bw colorshift crop overlay
 	make clean
