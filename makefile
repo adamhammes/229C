@@ -4,7 +4,7 @@ cr_test : crop
 	rm -f c_insanity.simp CR.simp insanity.simp
 	wget --no-check-certificate http://orion.math.iastate.edu/dstolee/229/project1/insanity.simp >/dev/null 2>&1
 	wget --no-check-certificate http://orion.math.iastate.edu/dstolee/229/project1/c_insanity.simp >/dev/null 2>&1
-	./valgrind --leak-check-yes./crop insanity.simp CR.simp 150 112 220 290
+	valgrind --leak-check-yes./crop insanity.simp CR.simp 150 112 220 290
 	./compare CR.simp c_insanity.simp
 	rm CR.simp c_insanity.simp insanity.simp
 
@@ -13,7 +13,7 @@ bw_test: bw
 	wget --no-check-certificate http://orion.math.iastate.edu/dstolee/229/project1/attached.simp >/dev/null 2>&1
 	wget --no-check-certificate http://orion.math.iastate.edu/dstolee/229/project1/bw_attached.simp >/dev/null 2>&1
 	./bw attached.simp BW.simp
-	./valgrind --leak-check-yes ./compare BW.simp bw_attached.simp
+	valgrind --leak-check-yes ./compare BW.simp bw_attached.simp
 	rm -f BW.simp bw_attached.simp attached.simp
 
 cs_test: colorshift
@@ -28,7 +28,7 @@ cs_test: colorshift
 	./colorshift keanu.simp rbg.simp RBG
 	./colorshift keanu.simp rg.simp RG
 	./colorshift keanu.simp rb.simp RB
-	./valgrind --leak-check-yes ./colorshift keanu.simp gb.simp GB
+	valgrind --leak-check-yes ./colorshift keanu.simp gb.simp GB
 	./compare rgb.simp keanurgb.simp
 	./compare rbg.simp keanurbg.simp
 	./compare rg.simp keanurg.simp
@@ -41,7 +41,7 @@ ov_test : overlay
 	wget --no-check-certificate http://orion.math.iastate.edu/dstolee/229/project1/doge.simp >/dev/null 2>&1
 	wget --no-check-certificate http://orion.math.iastate.edu/dstolee/229/project1/insanity.simp >/dev/null 2>&1
 	wget --no-check-certificate http://orion.math.iastate.edu/dstolee/229/project1/c_insanity.simp >/dev/null 2>&1
-	./valgrind --leak-check-yes ./crop insanity.simp OV.simp 150 112 220 290
+	valgrind --leak-check-yes ./crop insanity.simp OV.simp 150 112 220 290
 	./compare OV.simp c_insanity.simp
 
 tarball : bw colorshift crop overlay
