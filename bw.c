@@ -11,10 +11,9 @@ int main( int argc, char** argv ) {
 	infile = open_file( argv[1] );
 	pic = read_in( infile );
 	fclose( infile );
-
+	
 	make_grey( &pic );
-
-	write_file( argv[2] , &pic );
+	write_file( &pic, argv[2] );
 	close_image( &pic );
 	return 0;
 }
