@@ -1,6 +1,6 @@
 all: bw colorshift crop overlay
 
-test_bw: bw
+bw_test: bw
 	rm -f attached.*
 	wget --no-check-certificate http://orion.math.iastate.edu/dstolee/229/project1/attached.simp >/dev/null 2>&1
 	wget --no-check-certificate http://orion.math.iastate.edu/dstolee/229/project1/bw_attached.simp >/dev/null 2>&1
