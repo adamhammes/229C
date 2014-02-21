@@ -1,5 +1,13 @@
 all: bw colorshift crop overlay
 
+test_bw: bw
+	rm attached.*
+	wget --no-check-certificate http://orion.math.iastate.edu/dstolee/229/project1/attached.simp >/dev/null 2>&1
+	wget --no-check-certificate http://orion.math.iastate.edu/dstolee/229/project1/bw_attached.simp >/dev/null 2>&1
+	./bw attached.simp BW.simp
+	./compare BW.simp bw_attached.simp
+
+
 tarball : bw colorshift crop overlay
 	make clean
 	tar czf hammesa.tar.gzip *.c *.h README.md makefile
